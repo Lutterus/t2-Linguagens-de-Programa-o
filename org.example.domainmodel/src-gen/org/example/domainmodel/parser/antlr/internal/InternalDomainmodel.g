@@ -325,6 +325,20 @@ ruleFeature returns [EObject current=null]
 				}
 			)
 		)
+		(
+			otherlv_4='('
+			{
+				newLeafNode(otherlv_4, grammarAccess.getFeatureAccess().getLeftParenthesisKeyword_4_0());
+			}
+			this_INT_5=RULE_INT
+			{
+				newLeafNode(this_INT_5, grammarAccess.getFeatureAccess().getINTTerminalRuleCall_4_1());
+			}
+			otherlv_6=')'
+			{
+				newLeafNode(otherlv_6, grammarAccess.getFeatureAccess().getRightParenthesisKeyword_4_2());
+			}
+		)?
 	)
 ;
 

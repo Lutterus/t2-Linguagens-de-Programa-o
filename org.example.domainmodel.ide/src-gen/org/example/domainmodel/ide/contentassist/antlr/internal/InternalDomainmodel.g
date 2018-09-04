@@ -552,6 +552,7 @@ rule__Feature__Group__3
 	}
 :
 	rule__Feature__Group__3__Impl
+	rule__Feature__Group__4
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -566,6 +567,113 @@ rule__Feature__Group__3__Impl
 	{ before(grammarAccess.getFeatureAccess().getTypeAssignment_3()); }
 	(rule__Feature__TypeAssignment_3)
 	{ after(grammarAccess.getFeatureAccess().getTypeAssignment_3()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Feature__Group__4
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Feature__Group__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Feature__Group__4__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getFeatureAccess().getGroup_4()); }
+	(rule__Feature__Group_4__0)?
+	{ after(grammarAccess.getFeatureAccess().getGroup_4()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Feature__Group_4__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Feature__Group_4__0__Impl
+	rule__Feature__Group_4__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Feature__Group_4__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getFeatureAccess().getLeftParenthesisKeyword_4_0()); }
+	'('
+	{ after(grammarAccess.getFeatureAccess().getLeftParenthesisKeyword_4_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Feature__Group_4__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Feature__Group_4__1__Impl
+	rule__Feature__Group_4__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Feature__Group_4__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getFeatureAccess().getINTTerminalRuleCall_4_1()); }
+	RULE_INT
+	{ after(grammarAccess.getFeatureAccess().getINTTerminalRuleCall_4_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Feature__Group_4__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Feature__Group_4__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Feature__Group_4__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getFeatureAccess().getRightParenthesisKeyword_4_2()); }
+	')'
+	{ after(grammarAccess.getFeatureAccess().getRightParenthesisKeyword_4_2()); }
 )
 ;
 finally {

@@ -152,12 +152,16 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final CrossReference cTypeTypeCrossReference_3_0 = (CrossReference)cTypeAssignment_3.eContents().get(0);
 		private final RuleCall cTypeTypeIDTerminalRuleCall_3_0_1 = (RuleCall)cTypeTypeCrossReference_3_0.eContents().get(1);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cLeftParenthesisKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_4_1 = (RuleCall)cGroup_4.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
 		
 		//Feature:
-		//	many?='many'? name=ID ':' type=[Type];
+		//	many?='many'? name=ID ':' type=[Type] ('(' INT ')')?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//many?='many'? name=ID ':' type=[Type]
+		//many?='many'? name=ID ':' type=[Type] ('(' INT ')')?
 		public Group getGroup() { return cGroup; }
 		
 		//many?='many'?
@@ -183,6 +187,18 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ID
 		public RuleCall getTypeTypeIDTerminalRuleCall_3_0_1() { return cTypeTypeIDTerminalRuleCall_3_0_1; }
+		
+		//('(' INT ')')?
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_4_0() { return cLeftParenthesisKeyword_4_0; }
+		
+		//INT
+		public RuleCall getINTTerminalRuleCall_4_1() { return cINTTerminalRuleCall_4_1; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_4_2() { return cRightParenthesisKeyword_4_2; }
 	}
 	
 	
@@ -278,7 +294,7 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Feature:
-	//	many?='many'? name=ID ':' type=[Type];
+	//	many?='many'? name=ID ':' type=[Type] ('(' INT ')')?;
 	public FeatureElements getFeatureAccess() {
 		return pFeature;
 	}
