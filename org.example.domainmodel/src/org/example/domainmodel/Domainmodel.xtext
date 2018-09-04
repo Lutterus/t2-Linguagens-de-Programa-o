@@ -16,6 +16,12 @@ Entity:
     'entity' name=ID ('extends' superType=[Entity])? '{'
         (features+=Feature)*
     '}';
- 
+    
 Feature:
-    (many?='many')? name=ID ':' type=[Type]  ('('INT')')?;
+    (many?='many')? name=ID ':' type=[Type]  variableType;
+
+
+variableType:
+	('('INT')')?
+;   
+   

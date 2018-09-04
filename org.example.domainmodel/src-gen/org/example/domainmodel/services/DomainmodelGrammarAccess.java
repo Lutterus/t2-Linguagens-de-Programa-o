@@ -152,16 +152,13 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final CrossReference cTypeTypeCrossReference_3_0 = (CrossReference)cTypeAssignment_3.eContents().get(0);
 		private final RuleCall cTypeTypeIDTerminalRuleCall_3_0_1 = (RuleCall)cTypeTypeCrossReference_3_0.eContents().get(1);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cLeftParenthesisKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final RuleCall cINTTerminalRuleCall_4_1 = (RuleCall)cGroup_4.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
+		private final RuleCall cVariableTypeParserRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
 		
 		//Feature:
-		//	many?='many'? name=ID ':' type=[Type] ('(' INT ')')?;
+		//	many?='many'? name=ID ':' type=[Type] variableType;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//many?='many'? name=ID ':' type=[Type] ('(' INT ')')?
+		//many?='many'? name=ID ':' type=[Type] variableType
 		public Group getGroup() { return cGroup; }
 		
 		//many?='many'?
@@ -188,17 +185,31 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getTypeTypeIDTerminalRuleCall_3_0_1() { return cTypeTypeIDTerminalRuleCall_3_0_1; }
 		
+		//variableType
+		public RuleCall getVariableTypeParserRuleCall_4() { return cVariableTypeParserRuleCall_4; }
+	}
+	public class VariableTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.example.domainmodel.Domainmodel.variableType");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//variableType:
+		//	('(' INT ')')?;
+		@Override public ParserRule getRule() { return rule; }
+		
 		//('(' INT ')')?
-		public Group getGroup_4() { return cGroup_4; }
+		public Group getGroup() { return cGroup; }
 		
 		//'('
-		public Keyword getLeftParenthesisKeyword_4_0() { return cLeftParenthesisKeyword_4_0; }
+		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
 		
 		//INT
-		public RuleCall getINTTerminalRuleCall_4_1() { return cINTTerminalRuleCall_4_1; }
+		public RuleCall getINTTerminalRuleCall_1() { return cINTTerminalRuleCall_1; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_4_2() { return cRightParenthesisKeyword_4_2; }
+		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
 	}
 	
 	
@@ -207,6 +218,7 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	private final DataTypeElements pDataType;
 	private final EntityElements pEntity;
 	private final FeatureElements pFeature;
+	private final VariableTypeElements pVariableType;
 	
 	private final Grammar grammar;
 	
@@ -222,6 +234,7 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 		this.pDataType = new DataTypeElements();
 		this.pEntity = new EntityElements();
 		this.pFeature = new FeatureElements();
+		this.pVariableType = new VariableTypeElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -294,13 +307,23 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Feature:
-	//	many?='many'? name=ID ':' type=[Type] ('(' INT ')')?;
+	//	many?='many'? name=ID ':' type=[Type] variableType;
 	public FeatureElements getFeatureAccess() {
 		return pFeature;
 	}
 	
 	public ParserRule getFeatureRule() {
 		return getFeatureAccess().getRule();
+	}
+	
+	//variableType:
+	//	('(' INT ')')?;
+	public VariableTypeElements getVariableTypeAccess() {
+		return pVariableType;
+	}
+	
+	public ParserRule getVariableTypeRule() {
+		return getVariableTypeAccess().getRule();
 	}
 	
 	//terminal ID:

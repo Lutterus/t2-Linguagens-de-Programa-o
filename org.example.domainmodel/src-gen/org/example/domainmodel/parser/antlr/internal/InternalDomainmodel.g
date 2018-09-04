@@ -325,21 +325,50 @@ ruleFeature returns [EObject current=null]
 				}
 			)
 		)
-		(
-			otherlv_4='('
-			{
-				newLeafNode(otherlv_4, grammarAccess.getFeatureAccess().getLeftParenthesisKeyword_4_0());
-			}
-			this_INT_5=RULE_INT
-			{
-				newLeafNode(this_INT_5, grammarAccess.getFeatureAccess().getINTTerminalRuleCall_4_1());
-			}
-			otherlv_6=')'
-			{
-				newLeafNode(otherlv_6, grammarAccess.getFeatureAccess().getRightParenthesisKeyword_4_2());
-			}
-		)?
+		{
+			newCompositeNode(grammarAccess.getFeatureAccess().getVariableTypeParserRuleCall_4());
+		}
+		rulevariableType
+		{
+			afterParserOrEnumRuleCall();
+		}
 	)
+;
+
+// Entry rule entryRulevariableType
+entryRulevariableType returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getVariableTypeRule()); }
+	iv_rulevariableType=rulevariableType
+	{ $current=$iv_rulevariableType.current.getText(); }
+	EOF;
+
+// Rule variableType
+rulevariableType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		kw='('
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getVariableTypeAccess().getLeftParenthesisKeyword_0());
+		}
+		this_INT_1=RULE_INT
+		{
+			$current.merge(this_INT_1);
+		}
+		{
+			newLeafNode(this_INT_1, grammarAccess.getVariableTypeAccess().getINTTerminalRuleCall_1());
+		}
+		kw=')'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getVariableTypeAccess().getRightParenthesisKeyword_2());
+		}
+	)?
 ;
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;

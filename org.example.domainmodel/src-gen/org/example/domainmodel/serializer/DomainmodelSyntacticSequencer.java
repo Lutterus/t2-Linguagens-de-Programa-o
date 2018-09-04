@@ -10,9 +10,6 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
-import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 import org.example.domainmodel.services.DomainmodelGrammarAccess;
@@ -21,25 +18,25 @@ import org.example.domainmodel.services.DomainmodelGrammarAccess;
 public class DomainmodelSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected DomainmodelGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_Feature___LeftParenthesisKeyword_4_0_INTTerminalRuleCall_4_1_RightParenthesisKeyword_4_2__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (DomainmodelGrammarAccess) access;
-		match_Feature___LeftParenthesisKeyword_4_0_INTTerminalRuleCall_4_1_RightParenthesisKeyword_4_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getFeatureAccess().getLeftParenthesisKeyword_4_0()), new TokenAlias(false, false, grammarAccess.getFeatureAccess().getINTTerminalRuleCall_4_1()), new TokenAlias(false, false, grammarAccess.getFeatureAccess().getRightParenthesisKeyword_4_2()));
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getINTRule())
-			return getINTToken(semanticObject, ruleCall, node);
+		if (ruleCall.getRule() == grammarAccess.getVariableTypeRule())
+			return getvariableTypeToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
 	/**
-	 * terminal INT returns ecore::EInt: ('0'..'9')+;
+	 * variableType:
+	 * 	('('INT')')?
+	 * ;
 	 */
-	protected String getINTToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+	protected String getvariableTypeToken(EObject semanticObject, RuleCall ruleCall, INode node) {
 		if (node != null)
 			return getTokenText(node);
 		return "";
@@ -51,21 +48,8 @@ public class DomainmodelSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Feature___LeftParenthesisKeyword_4_0_INTTerminalRuleCall_4_1_RightParenthesisKeyword_4_2__q.equals(syntax))
-				emit_Feature___LeftParenthesisKeyword_4_0_INTTerminalRuleCall_4_1_RightParenthesisKeyword_4_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else acceptNodes(getLastNavigableState(), syntaxNodes);
+			acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
-	/**
-	 * Ambiguous syntax:
-	 *     ('(' INT ')')?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     type=[Type|ID] (ambiguity) (rule end)
-	 */
-	protected void emit_Feature___LeftParenthesisKeyword_4_0_INTTerminalRuleCall_4_1_RightParenthesisKeyword_4_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
 }

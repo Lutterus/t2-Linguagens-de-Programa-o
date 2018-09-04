@@ -681,7 +681,7 @@ public class InternalDomainmodelParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFeature"
-    // InternalDomainmodel.g:271:1: ruleFeature returns [EObject current=null] : ( ( (lv_many_0_0= 'many' ) )? ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (otherlv_3= RULE_ID ) ) (otherlv_4= '(' this_INT_5= RULE_INT otherlv_6= ')' )? ) ;
+    // InternalDomainmodel.g:271:1: ruleFeature returns [EObject current=null] : ( ( (lv_many_0_0= 'many' ) )? ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (otherlv_3= RULE_ID ) ) rulevariableType ) ;
     public final EObject ruleFeature() throws RecognitionException {
         EObject current = null;
 
@@ -689,19 +689,16 @@ public class InternalDomainmodelParser extends AbstractInternalAntlrParser {
         Token lv_name_1_0=null;
         Token otherlv_2=null;
         Token otherlv_3=null;
-        Token otherlv_4=null;
-        Token this_INT_5=null;
-        Token otherlv_6=null;
 
 
         	enterRule();
 
         try {
-            // InternalDomainmodel.g:277:2: ( ( ( (lv_many_0_0= 'many' ) )? ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (otherlv_3= RULE_ID ) ) (otherlv_4= '(' this_INT_5= RULE_INT otherlv_6= ')' )? ) )
-            // InternalDomainmodel.g:278:2: ( ( (lv_many_0_0= 'many' ) )? ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (otherlv_3= RULE_ID ) ) (otherlv_4= '(' this_INT_5= RULE_INT otherlv_6= ')' )? )
+            // InternalDomainmodel.g:277:2: ( ( ( (lv_many_0_0= 'many' ) )? ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (otherlv_3= RULE_ID ) ) rulevariableType ) )
+            // InternalDomainmodel.g:278:2: ( ( (lv_many_0_0= 'many' ) )? ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (otherlv_3= RULE_ID ) ) rulevariableType )
             {
-            // InternalDomainmodel.g:278:2: ( ( (lv_many_0_0= 'many' ) )? ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (otherlv_3= RULE_ID ) ) (otherlv_4= '(' this_INT_5= RULE_INT otherlv_6= ')' )? )
-            // InternalDomainmodel.g:279:3: ( (lv_many_0_0= 'many' ) )? ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (otherlv_3= RULE_ID ) ) (otherlv_4= '(' this_INT_5= RULE_INT otherlv_6= ')' )?
+            // InternalDomainmodel.g:278:2: ( ( (lv_many_0_0= 'many' ) )? ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (otherlv_3= RULE_ID ) ) rulevariableType )
+            // InternalDomainmodel.g:279:3: ( (lv_many_0_0= 'many' ) )? ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ':' ( (otherlv_3= RULE_ID ) ) rulevariableType
             {
             // InternalDomainmodel.g:279:3: ( (lv_many_0_0= 'many' ) )?
             int alt5=2;
@@ -787,35 +784,17 @@ public class InternalDomainmodelParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDomainmodel.g:328:3: (otherlv_4= '(' this_INT_5= RULE_INT otherlv_6= ')' )?
-            int alt6=2;
-            int LA6_0 = input.LA(1);
 
-            if ( (LA6_0==18) ) {
-                alt6=1;
-            }
-            switch (alt6) {
-                case 1 :
-                    // InternalDomainmodel.g:329:4: otherlv_4= '(' this_INT_5= RULE_INT otherlv_6= ')'
-                    {
-                    otherlv_4=(Token)match(input,18,FOLLOW_10); 
+            			newCompositeNode(grammarAccess.getFeatureAccess().getVariableTypeParserRuleCall_4());
+            		
+            pushFollow(FOLLOW_2);
+            rulevariableType();
 
-                    				newLeafNode(otherlv_4, grammarAccess.getFeatureAccess().getLeftParenthesisKeyword_4_0());
-                    			
-                    this_INT_5=(Token)match(input,RULE_INT,FOLLOW_11); 
+            state._fsp--;
 
-                    				newLeafNode(this_INT_5, grammarAccess.getFeatureAccess().getINTTerminalRuleCall_4_1());
-                    			
-                    otherlv_6=(Token)match(input,19,FOLLOW_2); 
 
-                    				newLeafNode(otherlv_6, grammarAccess.getFeatureAccess().getRightParenthesisKeyword_4_2());
-                    			
-
-                    }
-                    break;
-
-            }
-
+            			afterParserOrEnumRuleCall();
+            		
 
             }
 
@@ -837,6 +816,110 @@ public class InternalDomainmodelParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end "ruleFeature"
 
+
+    // $ANTLR start "entryRulevariableType"
+    // InternalDomainmodel.g:339:1: entryRulevariableType returns [String current=null] : iv_rulevariableType= rulevariableType EOF ;
+    public final String entryRulevariableType() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_rulevariableType = null;
+
+
+        try {
+            // InternalDomainmodel.g:339:52: (iv_rulevariableType= rulevariableType EOF )
+            // InternalDomainmodel.g:340:2: iv_rulevariableType= rulevariableType EOF
+            {
+             newCompositeNode(grammarAccess.getVariableTypeRule()); 
+            pushFollow(FOLLOW_1);
+            iv_rulevariableType=rulevariableType();
+
+            state._fsp--;
+
+             current =iv_rulevariableType.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRulevariableType"
+
+
+    // $ANTLR start "rulevariableType"
+    // InternalDomainmodel.g:346:1: rulevariableType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= '(' this_INT_1= RULE_INT kw= ')' )? ;
+    public final AntlrDatatypeRuleToken rulevariableType() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token kw=null;
+        Token this_INT_1=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalDomainmodel.g:352:2: ( (kw= '(' this_INT_1= RULE_INT kw= ')' )? )
+            // InternalDomainmodel.g:353:2: (kw= '(' this_INT_1= RULE_INT kw= ')' )?
+            {
+            // InternalDomainmodel.g:353:2: (kw= '(' this_INT_1= RULE_INT kw= ')' )?
+            int alt6=2;
+            int LA6_0 = input.LA(1);
+
+            if ( (LA6_0==18) ) {
+                alt6=1;
+            }
+            switch (alt6) {
+                case 1 :
+                    // InternalDomainmodel.g:354:3: kw= '(' this_INT_1= RULE_INT kw= ')'
+                    {
+                    kw=(Token)match(input,18,FOLLOW_10); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getVariableTypeAccess().getLeftParenthesisKeyword_0());
+                    		
+                    this_INT_1=(Token)match(input,RULE_INT,FOLLOW_11); 
+
+                    			current.merge(this_INT_1);
+                    		
+
+                    			newLeafNode(this_INT_1, grammarAccess.getVariableTypeAccess().getINTTerminalRuleCall_1());
+                    		
+                    kw=(Token)match(input,19,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getVariableTypeAccess().getRightParenthesisKeyword_2());
+                    		
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "rulevariableType"
+
     // Delegated rules
 
 
@@ -850,7 +933,7 @@ public class InternalDomainmodelParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000018010L});
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000040002L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000040000L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000080000L});
 
