@@ -60,19 +60,19 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	public class DataTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.example.domainmodel.Domainmodel.DataType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cDatatypeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cDATABASENameKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
 		//DataType:
-		//	'datatype' name=ID;
+		//	'DATABASE name' name=ID;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'datatype' name=ID
+		//'DATABASE name' name=ID
 		public Group getGroup() { return cGroup; }
 		
-		//'datatype'
-		public Keyword getDatatypeKeyword_0() { return cDatatypeKeyword_0; }
+		//'DATABASE name'
+		public Keyword getDATABASENameKeyword_0() { return cDATABASENameKeyword_0; }
 		
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -150,15 +150,15 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cTypeTypeCrossReference_3_0 = (CrossReference)cTypeAssignment_3.eContents().get(0);
-		private final RuleCall cTypeTypeIDTerminalRuleCall_3_0_1 = (RuleCall)cTypeTypeCrossReference_3_0.eContents().get(1);
-		private final RuleCall cVariableTypeParserRuleCall_4 = (RuleCall)cGroup.eContents().get(4);
+		private final RuleCall cTypeVariableTypeParserRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
+		private final Assignment cSAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cSVariableSizeParserRuleCall_4_0 = (RuleCall)cSAssignment_4.eContents().get(0);
 		
 		//Feature:
-		//	many?='many'? name=ID ':' type=[Type] variableType;
+		//	many?='many'? name=ID ':' type=variableType s=variableSize;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//many?='many'? name=ID ':' type=[Type] variableType
+		//many?='many'? name=ID ':' type=variableType s=variableSize
 		public Group getGroup() { return cGroup; }
 		
 		//many?='many'?
@@ -176,26 +176,69 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 		
-		//type=[Type]
+		//type=variableType
 		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
 		
-		//[Type]
-		public CrossReference getTypeTypeCrossReference_3_0() { return cTypeTypeCrossReference_3_0; }
-		
-		//ID
-		public RuleCall getTypeTypeIDTerminalRuleCall_3_0_1() { return cTypeTypeIDTerminalRuleCall_3_0_1; }
-		
 		//variableType
-		public RuleCall getVariableTypeParserRuleCall_4() { return cVariableTypeParserRuleCall_4; }
+		public RuleCall getTypeVariableTypeParserRuleCall_3_0() { return cTypeVariableTypeParserRuleCall_3_0; }
+		
+		//s=variableSize
+		public Assignment getSAssignment_4() { return cSAssignment_4; }
+		
+		//variableSize
+		public RuleCall getSVariableSizeParserRuleCall_4_0() { return cSVariableSizeParserRuleCall_4_0; }
 	}
 	public class VariableTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.example.domainmodel.Domainmodel.variableType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cDATEKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cINTKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cCHARKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cVARCHARKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cDATETIMEKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Keyword cTIMESTAMPKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
+		private final Keyword cTEXTKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
+		private final Keyword cNUMBERKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
+		
+		//variableType:
+		//	'DATE' | 'INT' | 'CHAR' | 'VARCHAR' | 'DATETIME' | 'TIMESTAMP' | 'TEXT' | 'NUMBER';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'DATE' | 'INT' | 'CHAR' | 'VARCHAR' | 'DATETIME' | 'TIMESTAMP' | 'TEXT' | 'NUMBER'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'DATE'
+		public Keyword getDATEKeyword_0() { return cDATEKeyword_0; }
+		
+		//'INT'
+		public Keyword getINTKeyword_1() { return cINTKeyword_1; }
+		
+		//'CHAR'
+		public Keyword getCHARKeyword_2() { return cCHARKeyword_2; }
+		
+		//'VARCHAR'
+		public Keyword getVARCHARKeyword_3() { return cVARCHARKeyword_3; }
+		
+		//'DATETIME'
+		public Keyword getDATETIMEKeyword_4() { return cDATETIMEKeyword_4; }
+		
+		//'TIMESTAMP'
+		public Keyword getTIMESTAMPKeyword_5() { return cTIMESTAMPKeyword_5; }
+		
+		//'TEXT'
+		public Keyword getTEXTKeyword_6() { return cTEXTKeyword_6; }
+		
+		//'NUMBER'
+		public Keyword getNUMBERKeyword_7() { return cNUMBERKeyword_7; }
+	}
+	public class VariableSizeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.example.domainmodel.Domainmodel.variableSize");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final RuleCall cINTTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//variableType:
+		//variableSize:
 		//	('(' INT ')')?;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -219,6 +262,7 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	private final EntityElements pEntity;
 	private final FeatureElements pFeature;
 	private final VariableTypeElements pVariableType;
+	private final VariableSizeElements pVariableSize;
 	
 	private final Grammar grammar;
 	
@@ -235,6 +279,7 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 		this.pEntity = new EntityElements();
 		this.pFeature = new FeatureElements();
 		this.pVariableType = new VariableTypeElements();
+		this.pVariableSize = new VariableSizeElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -285,7 +330,7 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//DataType:
-	//	'datatype' name=ID;
+	//	'DATABASE name' name=ID;
 	public DataTypeElements getDataTypeAccess() {
 		return pDataType;
 	}
@@ -307,7 +352,7 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Feature:
-	//	many?='many'? name=ID ':' type=[Type] variableType;
+	//	many?='many'? name=ID ':' type=variableType s=variableSize;
 	public FeatureElements getFeatureAccess() {
 		return pFeature;
 	}
@@ -317,13 +362,23 @@ public class DomainmodelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//variableType:
-	//	('(' INT ')')?;
+	//	'DATE' | 'INT' | 'CHAR' | 'VARCHAR' | 'DATETIME' | 'TIMESTAMP' | 'TEXT' | 'NUMBER';
 	public VariableTypeElements getVariableTypeAccess() {
 		return pVariableType;
 	}
 	
 	public ParserRule getVariableTypeRule() {
 		return getVariableTypeAccess().getRule();
+	}
+	
+	//variableSize:
+	//	('(' INT ')')?;
+	public VariableSizeElements getVariableSizeAccess() {
+		return pVariableSize;
+	}
+	
+	public ParserRule getVariableSizeRule() {
+		return getVariableSizeAccess().getRule();
 	}
 	
 	//terminal ID:

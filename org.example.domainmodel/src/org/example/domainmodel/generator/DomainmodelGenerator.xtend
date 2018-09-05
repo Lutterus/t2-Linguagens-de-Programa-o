@@ -52,8 +52,8 @@ class DomainmodelGenerator extends AbstractGenerator {
 		CREATE TABLE «e.name» (
 			pk«e.name» INT NOT NULL PRIMARY KEY,
 		    «FOR f : e.features»
-		    «IF tables.contains(f.type.name)»
-		    «alterTables.add("ALTER TABLE "+f.type.name+" ADD FOREIGN KEY (fk"+e.name+") REFERENCES "+e.name+"(pk"+e.name+");")»
+		    «IF tables.contains(f.name)==false»
+		    «alterTables.add("ALTER TABLE "+f.name+" ADD FOREIGN KEY (fk"+e.name+") REFERENCES "+e.name+"(pk"+e.name+");")»
 		    «ELSE»
 		    «f.compile»
 		    «ENDIF»
@@ -64,6 +64,6 @@ class DomainmodelGenerator extends AbstractGenerator {
 	'''
 
 	def compile(Feature f) '''
-		«f.name» «f.type.fullyQualifiedName»,
+		«f.name» «f.type» «f.s»,
 	'''
 }

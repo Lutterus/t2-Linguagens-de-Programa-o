@@ -26,21 +26,9 @@ public class DomainmodelSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getVariableTypeRule())
-			return getvariableTypeToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
-	/**
-	 * variableType:
-	 * 	('('INT')')?
-	 * ;
-	 */
-	protected String getvariableTypeToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {

@@ -101,7 +101,7 @@ public class DomainmodelSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     Feature returns Feature
 	 *
 	 * Constraint:
-	 *     (many?='many'? name=ID type=[Type|ID])
+	 *     (many?='many'? name=ID type=variableType s=variableSize)
 	 */
 	protected void sequence_Feature(ISerializationContext context, Feature semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

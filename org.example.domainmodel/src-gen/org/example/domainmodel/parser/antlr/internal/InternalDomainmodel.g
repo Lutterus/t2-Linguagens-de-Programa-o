@@ -148,9 +148,9 @@ ruleDataType returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='datatype'
+		otherlv_0='DATABASE name'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getDataTypeAccess().getDatatypeKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getDataTypeAccess().getDATABASENameKeyword_0());
 		}
 		(
 			(
@@ -315,23 +315,41 @@ ruleFeature returns [EObject current=null]
 		(
 			(
 				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getFeatureRule());
-					}
+					newCompositeNode(grammarAccess.getFeatureAccess().getTypeVariableTypeParserRuleCall_3_0());
 				}
-				otherlv_3=RULE_ID
+				lv_type_3_0=rulevariableType
 				{
-					newLeafNode(otherlv_3, grammarAccess.getFeatureAccess().getTypeTypeCrossReference_3_0());
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getFeatureRule());
+					}
+					set(
+						$current,
+						"type",
+						lv_type_3_0,
+						"org.example.domainmodel.Domainmodel.variableType");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		{
-			newCompositeNode(grammarAccess.getFeatureAccess().getVariableTypeParserRuleCall_4());
-		}
-		rulevariableType
-		{
-			afterParserOrEnumRuleCall();
-		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getFeatureAccess().getSVariableSizeParserRuleCall_4_0());
+				}
+				lv_s_4_0=rulevariableSize
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getFeatureRule());
+					}
+					set(
+						$current,
+						"s",
+						lv_s_4_0,
+						"org.example.domainmodel.Domainmodel.variableSize");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 	)
 ;
 
@@ -351,22 +369,88 @@ rulevariableType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleTo
 	leaveRule();
 }:
 	(
+		kw='DATE'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getVariableTypeAccess().getDATEKeyword_0());
+		}
+		    |
+		kw='INT'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getVariableTypeAccess().getINTKeyword_1());
+		}
+		    |
+		kw='CHAR'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getVariableTypeAccess().getCHARKeyword_2());
+		}
+		    |
+		kw='VARCHAR'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getVariableTypeAccess().getVARCHARKeyword_3());
+		}
+		    |
+		kw='DATETIME'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getVariableTypeAccess().getDATETIMEKeyword_4());
+		}
+		    |
+		kw='TIMESTAMP'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getVariableTypeAccess().getTIMESTAMPKeyword_5());
+		}
+		    |
+		kw='TEXT'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getVariableTypeAccess().getTEXTKeyword_6());
+		}
+		    |
+		kw='NUMBER'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getVariableTypeAccess().getNUMBERKeyword_7());
+		}
+	)
+;
+
+// Entry rule entryRulevariableSize
+entryRulevariableSize returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getVariableSizeRule()); }
+	iv_rulevariableSize=rulevariableSize
+	{ $current=$iv_rulevariableSize.current.getText(); }
+	EOF;
+
+// Rule variableSize
+rulevariableSize returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
 		kw='('
 		{
 			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getVariableTypeAccess().getLeftParenthesisKeyword_0());
+			newLeafNode(kw, grammarAccess.getVariableSizeAccess().getLeftParenthesisKeyword_0());
 		}
 		this_INT_1=RULE_INT
 		{
 			$current.merge(this_INT_1);
 		}
 		{
-			newLeafNode(this_INT_1, grammarAccess.getVariableTypeAccess().getINTTerminalRuleCall_1());
+			newLeafNode(this_INT_1, grammarAccess.getVariableSizeAccess().getINTTerminalRuleCall_1());
 		}
 		kw=')'
 		{
 			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getVariableTypeAccess().getRightParenthesisKeyword_2());
+			newLeafNode(kw, grammarAccess.getVariableSizeAccess().getRightParenthesisKeyword_2());
 		}
 	)?
 ;

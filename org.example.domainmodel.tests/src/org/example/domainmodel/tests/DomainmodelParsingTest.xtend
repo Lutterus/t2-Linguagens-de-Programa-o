@@ -21,7 +21,26 @@ class DomainmodelParsingTest {
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''
-			Hello Xtext!
+			DATABASE name varchar
+			
+			entity Blog {
+			    title: VARCHAR(500)
+			    many posts: INT
+			}
+			 
+			entity HasAuthor {
+			    author: VARCHAR(1000)
+			}
+			 
+			entity Post extends HasAuthor {
+			    title: VARCHAR(1000)
+			    content: VARCHAR(1000)
+			    many comments: INT
+			}
+			 
+			entity Comment extends HasAuthor {
+			    content: VARCHAR(1000)
+			}
 		''')
 		Assertions.assertNotNull(result)
 		val errors = result.eResource.errors

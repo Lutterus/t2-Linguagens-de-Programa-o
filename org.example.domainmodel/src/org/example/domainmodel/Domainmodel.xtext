@@ -10,7 +10,7 @@ Type:
     DataType | Entity;
   
 DataType:
-    'datatype' name=ID;
+    'DATABASE name' name=ID;
  
 Entity:
     'entity' name=ID ('extends' superType=[Entity])? '{'
@@ -18,10 +18,13 @@ Entity:
     '}';
     
 Feature:
-    (many?='many')? name=ID ':' type=[Type]  variableType;
-
+    (many?='many')? name=ID ':' type=variableType  s=variableSize;
 
 variableType:
+	'DATE' | 'INT' | 'CHAR' | 'VARCHAR'| 'DATETIME' | 'TIMESTAMP' | 'TEXT' | 'NUMBER'
+;
+
+
+variableSize:
 	('('INT')')?
 ;   
-   

@@ -77,10 +77,11 @@ public class DomainmodelGenerator extends AbstractGenerator {
       EList<Feature> _features = e.getFeatures();
       for(final Feature f : _features) {
         {
-          boolean _contains = this.tables.contains(f.getType().getName());
-          if (_contains) {
+          boolean _contains = this.tables.contains(f.getName());
+          boolean _equals = (_contains == false);
+          if (_equals) {
             _builder.append("    ");
-            String _name_2 = f.getType().getName();
+            String _name_2 = f.getName();
             String _plus = ("ALTER TABLE " + _name_2);
             String _plus_1 = (_plus + " ADD FOREIGN KEY (fk");
             String _name_3 = e.getName();
@@ -131,8 +132,11 @@ public class DomainmodelGenerator extends AbstractGenerator {
     String _name = f.getName();
     _builder.append(_name);
     _builder.append(" ");
-    QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(f.getType());
-    _builder.append(_fullyQualifiedName);
+    String _type = f.getType();
+    _builder.append(_type);
+    _builder.append(" ");
+    String _s = f.getS();
+    _builder.append(_s);
     _builder.append(",");
     _builder.newLineIfNotEmpty();
     return _builder;

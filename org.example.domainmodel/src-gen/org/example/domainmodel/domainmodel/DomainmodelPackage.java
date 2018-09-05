@@ -216,7 +216,7 @@ public interface DomainmodelPackage extends EPackage
   int FEATURE__NAME = 1;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' reference.
+   * The feature id for the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -225,13 +225,22 @@ public interface DomainmodelPackage extends EPackage
   int FEATURE__TYPE = 2;
 
   /**
+   * The feature id for the '<em><b>S</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FEATURE__S = 3;
+
+  /**
    * The number of structural features of the '<em>Feature</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FEATURE_FEATURE_COUNT = 3;
+  int FEATURE_FEATURE_COUNT = 4;
 
 
   /**
@@ -351,15 +360,26 @@ public interface DomainmodelPackage extends EPackage
   EAttribute getFeature_Name();
 
   /**
-   * Returns the meta object for the reference '{@link org.example.domainmodel.domainmodel.Feature#getType <em>Type</em>}'.
+   * Returns the meta object for the attribute '{@link org.example.domainmodel.domainmodel.Feature#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Type</em>'.
+   * @return the meta object for the attribute '<em>Type</em>'.
    * @see org.example.domainmodel.domainmodel.Feature#getType()
    * @see #getFeature()
    * @generated
    */
-  EReference getFeature_Type();
+  EAttribute getFeature_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.example.domainmodel.domainmodel.Feature#getS <em>S</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>S</em>'.
+   * @see org.example.domainmodel.domainmodel.Feature#getS()
+   * @see #getFeature()
+   * @generated
+   */
+  EAttribute getFeature_S();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -483,12 +503,20 @@ public interface DomainmodelPackage extends EPackage
     EAttribute FEATURE__NAME = eINSTANCE.getFeature_Name();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FEATURE__TYPE = eINSTANCE.getFeature_Type();
+    EAttribute FEATURE__TYPE = eINSTANCE.getFeature_Type();
+
+    /**
+     * The meta object literal for the '<em><b>S</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FEATURE__S = eINSTANCE.getFeature_S();
 
   }
 

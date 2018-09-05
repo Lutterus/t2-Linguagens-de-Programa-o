@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.example.domainmodel.domainmodel.Feature#isMany <em>Many</em>}</li>
  *   <li>{@link org.example.domainmodel.domainmodel.Feature#getName <em>Name</em>}</li>
  *   <li>{@link org.example.domainmodel.domainmodel.Feature#getType <em>Type</em>}</li>
+ *   <li>{@link org.example.domainmodel.domainmodel.Feature#getS <em>S</em>}</li>
  * </ul>
  *
  * @see org.example.domainmodel.domainmodel.DomainmodelPackage#getFeature()
@@ -78,29 +79,55 @@ public interface Feature extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Type</b></em>' reference.
+   * Returns the value of the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type</em>' reference isn't clear,
+   * If the meaning of the '<em>Type</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' reference.
-   * @see #setType(Type)
+   * @return the value of the '<em>Type</em>' attribute.
+   * @see #setType(String)
    * @see org.example.domainmodel.domainmodel.DomainmodelPackage#getFeature_Type()
    * @model
    * @generated
    */
-  Type getType();
+  String getType();
 
   /**
-   * Sets the value of the '{@link org.example.domainmodel.domainmodel.Feature#getType <em>Type</em>}' reference.
+   * Sets the value of the '{@link org.example.domainmodel.domainmodel.Feature#getType <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' reference.
+   * @param value the new value of the '<em>Type</em>' attribute.
    * @see #getType()
    * @generated
    */
-  void setType(Type value);
+  void setType(String value);
+
+  /**
+   * Returns the value of the '<em><b>S</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>S</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>S</em>' attribute.
+   * @see #setS(String)
+   * @see org.example.domainmodel.domainmodel.DomainmodelPackage#getFeature_S()
+   * @model
+   * @generated
+   */
+  String getS();
+
+  /**
+   * Sets the value of the '{@link org.example.domainmodel.domainmodel.Feature#getS <em>S</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>S</em>' attribute.
+   * @see #getS()
+   * @generated
+   */
+  void setS(String value);
 
 } // Feature
