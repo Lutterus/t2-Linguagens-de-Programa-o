@@ -8,16 +8,16 @@ import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.extensions.InjectionExtension
 import org.eclipse.xtext.testing.util.ParseHelper
 import org.example.domainmodel.domainmodel.Domainmodel
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
+import org.junit.Assert
 
 @ExtendWith(InjectionExtension)
 @InjectWith(DomainmodelInjectorProvider)
 class DomainmodelParsingTest {
 	@Inject
 	ParseHelper<Domainmodel> parseHelper
-	
+
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''
@@ -42,96 +42,99 @@ class DomainmodelParsingTest {
 			    content: VARCHAR(1000)
 			}
 		''')
-		Assertions.assertNotNull(result)
+		Assert.assertNotNull(result)
 		val errors = result.eResource.errors
-		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: �errors.join(", ")�''')
+		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
 	}
+
 	@Test
 	def void loadModel2() {
 		val result = parseHelper.parse('''
-				DATABASE name varchar
-						
-						entity Market {
-						    title: VARCHAR(100)
-						    many products: INT
-						    many employees: INT
-						}
-						 
-						entity HasEmployee {
-						    name: VARCHAR(100)
-						    salary: NUMBER
-						}
-						entity Function extends HasEmployee{
-							description: VARCHAR(100)
-						}
-						 
-						entity Products {
-						    name: VARCHAR(1000)
-						    description: VARCHAR(1000)
-						    price: NUMBER
-						}
-						entity Order extends Products{
-							id: INT
-							many products: INT
-						}
-					''')
+			DATABASE name varchar
+					
+					entity Market {
+					    title: VARCHAR(100)
+					    many products: INT
+					    many employees: INT
+					}
+					 
+					entity HasEmployee {
+					    name: VARCHAR(100)
+					    salary: NUMBER
+					}
+					entity Function extends HasEmployee{
+						description: VARCHAR(100)
+					}
+					 
+					entity Products {
+					    name: VARCHAR(1000)
+					    description: VARCHAR(1000)
+					    price: NUMBER
+					}
+					entity Order extends Products{
+						id: INT
+						many products: INT
+					}
+			''')
 		Assert.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
 	}
+
 	@Test
 	def void loadModel3() {
 		val result = parseHelper.parse('''
-				DATABASE name varchar
+			DATABASE name varchar
+					
+					entity Library {
+					    title: VARCHAR(100)
+					    many books: INT
+					}
+					 
+					entity Author{
+						name: VARCHAR(100)
+						age: INT
+					}
+					entity Book extends Author{
+					    name: VARCHAR(100)
+					    description: TEXT(150)
+					    company: VARCHAR(100)
+					}
+					entity Loan extends Book{
+						id: INT
+						day: DATE
 						
-						entity Library {
-						    title: VARCHAR(100)
-						    many books: INT
-						}
-						 
-						entity Author{
-							name: VARCHAR(100)
-							age: INT
-						}
-						entity Book extends Author{
-						    name: VARCHAR(100)
-						    description: TEXT(150)
-						    company: VARCHAR(100)
-						}
-						entity Loan extends Book{
-							id: INT
-							day: DATE
-							
-						}
-					''')
+					}
+			''')
 		Assert.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
 	}
+
 	@Test
 	def void loadModel4() {
 		val result = parseHelper.parse('''
-				DATABASE name varchar
+			DATABASE name varchar
+					
+					entity Discipline {
+					    title: VARCHAR(100)
+					    many students: INT
+					}
+					 
+					entity Teacher extends Discipline{
+						name: VARCHAR(100)
+						age: INT
+						specialty: VARCHAR(50)
+					}
+					entity Student extends Discipline{
+						id: INT
+						   name: VARCHAR(100)
+					}
+					entity Note extends Student{
+						value: NUMBER
 						
-						entity Discipline {
-						    title: VARCHAR(100)
-						    many students: INT
-						}
-						 
-						entity Teacher extends Discipline{
-							name: VARCHAR(100)
-							age: INT
-							specialty: VARCHAR(50)
-						}
-						entity Student extends Discipline{
-							id: INT
-						    name: VARCHAR(100)
-						}
-						entity Note extends Student{
-							value: NUMBER
-							
-						}
-					''')
+					}
+			''')
 		Assert.assertNotNull(result)
 		val errors = result.eResource.errors
 		Assert.assertTrue('''Unexpected errors: «errors.join(", ")»''', errors.isEmpty)
