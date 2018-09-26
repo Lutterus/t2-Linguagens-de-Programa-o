@@ -1,0 +1,32 @@
+grammar org.example.domainmodel.Domainmodel with
+                                      org.eclipse.xtext.common.Terminals
+ 
+generate domainmodel "http://www.example.org/domainmodel/Domainmodel"
+ 
+Domainmodel :
+    (elements+=Type)*;
+  
+Type:
+    sd=DataType | Entity;
+  
+DataType:
+    'DATABASE name' name=ID;
+ 
+Entity:
+    'entity' name=ID ('extends' superType=[Entity])? '{'
+        (features+=Feature)*
+    '}';
+    
+Feature:
+    (many?='many')? name=ID ':' type=variableType  s=variableSize;
+
+variableType:
+	'DATE' | 'INT' | 'CHAR' | 'VARCHAR'| 'DATETIME' | 'TIMESTAMP' | 'TEXT' | 'NUMBER'
+;
+
+
+variableSize:
+	('('INT')')?
+;   
+
+
